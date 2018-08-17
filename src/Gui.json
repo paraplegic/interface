@@ -1,0 +1,120 @@
+{
+	"tag" : "root",
+	"children" : [
+		{	"tag" : "f0",
+			"widget" : "ttk.LabelFrame",
+			"args" : { "text" : "Top Frame" },
+			"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
+			"col_weight" : ["1"],
+			"row_weight" : ["1"],
+			"children" : [
+				{	"tag" : "nb0",
+					"widget" : "ttk.Notebook",
+					"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
+					"col_weight" : ["1"],
+					"row_weight" : ["1"],
+					"children" : [
+						{	"tag" : "tab0",
+							"widget" : "ttk.LabelFrame",
+							"args" : { "text" : "Tab 0" },
+							"add" : { "parent" : "nb0", "text" : "Tab 0" },
+							"children" : [
+								{	"tag" : "b0",
+									"widget" : "ttk.Button",
+									"args" : { "text" : "Exit", "command" : "self.exitApplication" },
+									"grid" : { "row" : "0", "column" : "0", "sticky" : "nw" },
+									"icon" : "stop-22"
+								}
+							]
+						},
+						{	"tag" : "tab1",
+							"widget" : "ttk.LabelFrame",
+							"args" : { "text" : "Tab 1" },
+							"add" : { "parent" : "nb0", "text" : "Tab 1" }
+						},
+						{	"tag" : "tab2",
+							"widget" : "ttk.LabelFrame",
+							"args" : { "text" : "Tab 2" },
+							"add" : { "parent" : "nb0", "text" : "Tab 2" }
+						},
+						{	"tag" : "tab3",
+							"widget" : "ttk.LabelFrame",
+							"args" : { "text" : "Tab 3" },
+							"add" : { "parent" : "nb0", "text" : "Tab 3" }
+						},
+						{	"tag" : "tab4",
+							"widget" : "ttk.LabelFrame",
+							"args" : { "text" : "Tab 4" },
+							"add" : { "parent" : "nb0", "text" : "Tab 4" }
+						}
+					]
+				}
+			]
+		},
+		{	"tag" : "f1",
+			"widget" : "ttk.LabelFrame",
+			"args" : { "text" : "Bottom Frame" },
+			"grid" : { "row" : "1", "column" : "0", "sticky" : "news" },
+			"col_weight" : ["1", "1"],
+			"row_weight" : ["1", "1", "10" ],
+			"children" : [
+				{	"tag" : "p0",
+					"widget" : "ttk.Label",
+					"args" : { "text" :	"Name:" },
+					"grid" : { "row" : 	"0", "column" : "0", "sticky" : "e" }
+				},
+				{	"tag" : "e0",
+					"widget" : "ttk.Entry",
+					"args" : { "width" : "20", "textvariable" : "e0" },
+					"grid" : { "row" : "0", "column" : "1", "sticky" : "w" }
+				},
+				{	"tag" : "p1",
+					"widget" : "ttk.Label",
+					"args" : { "text" :	"Address:" },
+					"grid" : {"row" :"1", "column" : "0", "sticky" : "e" }
+				},
+				{	"tag" : "e1",
+					"widget" : "ttk.Entry",
+					"args" : { "width" : "20", "textvariable" : "e1" },
+					"grid" : { "row" : "1", "column" : "1", "sticky" : "w" }
+				},
+				{	"tag" : "pw",
+					"widget" : "ttk.PanedWindow",
+					"opts" : { "orient" : "horizontal" },
+					"conf" : { "relief" : "raised" },
+					"grid" : { "row" : "2", "column" : "0", "sticky" : "news", "columnspan" : "2" },
+					"col_weight" : ["1"],
+					"row_weight" : ["1"],
+					"children" : [
+						{	"tag" : "pw_lft",
+							"widget" : "ttk.Frame",
+							"add" : { "parent" : "pw" },
+							"opts"	: { "relief" : "sunken", "border" : "1", "border" : "2" },
+							"children" : [
+								{	"tag" : "t0",
+									"widget" : "ttk.Treeview",
+									"scroll" : "xy",
+									"args" : { "selectmode" : "extended" },
+									"grid" : { "sticky" : "news" }
+								}
+							]
+						},
+						{	"tag" : "pw_rgt",
+							"widget" : "ttk.Frame",
+							"add" : { "parent" : "pw" },
+							"opts"	: { "relief" : "sunken", "border" : "2" },
+							"children" : [
+								{	"tag" : "t1",
+									"widget" : "ttk.Treeview",
+									"scroll" : "xy",
+									"args" : { "selectmode" : "extended" },
+									"grid" : { "sticky" : "news" }
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
