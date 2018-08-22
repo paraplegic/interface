@@ -51,12 +51,11 @@ def drawIcons( app, tab, cnv, icons, lbl ):
 	c = 80
 	max_y = 0
 	canvas = app.widgets[cnv]
-	## canvas.configure( width=640, height=10000, scrollregion=(0,0,640,10000) )
-	app.cnfWidget( tab, **{ "text" : lbl } )
-	for ic in icons.list():
+	iclist = icons.list()
+	app.cnfWidget( tab, **{ "text" : lbl+' (%d icons)' % len(iclist) } )
+	for ic in iclist:
 		conf = { "tag" : ic, "widget" : "ttk.Label", "icon" : ic, "args": { "text" : ic, "compound" : "left" }, "grid" : { "row": r, "column" : c } }
 		app.addWidget( cnv, ic, conf )
-		## print lbl, r, c, ic
 		canvas.create_window( c, r, window=app.widgets[ic] )
 		r += 30
 		if r > max_y:
