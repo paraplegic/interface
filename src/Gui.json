@@ -24,6 +24,17 @@
 									"args" : { "text" : "Exit", "command" : "self.exitApplication" },
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "nw" },
 									"icon" : "stop-22"
+								},
+								{	"tag" : "theme0",
+									"widget" : "ttk.Label",
+									"args" : { "text" :	"TTK Theme:" },
+									"grid" : { "row" : 	"0", "column" : "1", "sticky" : "e" }
+								},
+								{	"tag" : "combo0",
+									"widget" : "ttk.Combobox",
+									"args" : { "values" : [ "clam", "alt", "classic", "default" ], "textvariable" : "myTheme" },
+									"bind" : { "event" : "<<ComboboxSelected>>", "binding" : "self.setTheme" },
+									"grid" : { "row" : "0", "column" : "2", "sticky" : "w" }
 								}
 							]
 						},
@@ -65,7 +76,7 @@
 				},
 				{	"tag" : "e0",
 					"widget" : "ttk.Entry",
-					"args" : { "width" : "20", "textvariable" : "e0" },
+					"args" : { "width" : "20", "textvariable" : "var_e0" },
 					"grid" : { "row" : "0", "column" : "1", "sticky" : "w" }
 				},
 				{	"tag" : "p1",

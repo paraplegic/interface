@@ -25,6 +25,7 @@ def get_config( pth ):
 	return rv
 
 def walkConfig( app, p, w ):
+	print w['tag']
 	tag, typ = app.addWidget( p, w['tag'], w )
 	if 'children' in w:
 		for x in w['children']: 

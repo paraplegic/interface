@@ -9,6 +9,7 @@ class X( Tk.Tk ):
 		Tk.Tk.__init__( self )
 		self.icons = None
 		self.images = {}
+		self.vars = {}
 		self.widgets = {}
 		self.widgets['root'] = self
 		self.widgets['root'].grid_columnconfigure( 0, weight=1 )
@@ -16,6 +17,14 @@ class X( Tk.Tk ):
 
 	def exitApplication( self ):
 		self.destroy()
+
+	def setTheme( self, event ):
+		x = ttk.Style()
+		if self.vars['myTheme'].get() in x.theme_names():
+			newTheme = self.vars['myTheme'].get()
+			x.theme_use( newTheme )
+			return 1
+		return 0
 
 	def setIcons( self, icons ):
 		self.icons = icons
@@ -39,6 +48,11 @@ class X( Tk.Tk ):
 		self.widgets[w] = eval( s )
 
 		if 'args' in conf:
+			if 'textvariable' in conf['args']:
+				myvar = conf['args']['textvariable']
+				self.vars[myvar] = Tk.StringVar()
+				conf['args']['textvariable'] = self.vars[myvar]
+				
 			self.cnfWidget( w, **conf['args'] )
 
 		if 'add' in conf:
@@ -57,6 +71,10 @@ class X( Tk.Tk ):
 
 		if 'scroll' in conf:
 			self.addScrollbars( self.widgets[parent], self.widgets[w], conf['scroll'] )
+
+		if 'bind' in conf:
+			s = 'self.widgets[w].bind( "%s", %s )' % ( conf['bind']['event'], conf['bind']['binding'] )
+			eval( s )
 
 		if 'icon' in conf:
 			img = self.getIconImage( conf['icon'] )
