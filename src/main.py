@@ -46,17 +46,27 @@ def table_addColumns( tv, args ):
 		tv.column( a, width=12, stretch = True, anchor='center' )
 		tv.heading( a, text=a.capitalize() )
 
-def drawIcons( app, tab, icons, lbl ):
-	r = 0
-	c = 0
+def drawIcons( app, tab, cnv, icons, lbl ):
+	r = 10
+	c = 80
+	max_y = 0
+	canvas = app.widgets[cnv]
+	## canvas.configure( width=640, height=10000, scrollregion=(0,0,640,10000) )
 	app.cnfWidget( tab, **{ "text" : lbl } )
 	for ic in icons.list():
 		conf = { "tag" : ic, "widget" : "ttk.Label", "icon" : ic, "args": { "text" : ic, "compound" : "left" }, "grid" : { "row": r, "column" : c } }
-		app.addWidget( tab, ic, conf )
-		c += 1
-		if c > 10:
-			c = 0
-			r += 1
+		app.addWidget( cnv, ic, conf )
+		## print lbl, r, c, ic
+		canvas.create_window( c, r, window=app.widgets[ic] )
+		r += 30
+		if r > max_y:
+			max_y = r
+		if r > 9970:
+			r = 10
+			c += 200
+
+	canvas.configure( scrollregion=canvas.bbox( "all" ) )
+
 		
 def main( args ):
 
@@ -83,16 +93,16 @@ def main( args ):
 		table_addRow( t, [random.uniform(0.0,100.0) for _ in xrange(12)] )
 
 	app.setIcons( crystal )
-	drawIcons( app, "tab1", crystal, 'crystal' )
+	drawIcons( app, "tab1", "cnv1", crystal, 'crystal' )
 
 	app.setIcons( slick )
-	drawIcons( app, "tab2", slick, 'slick' )
+	drawIcons( app, "tab2", "cnv2", slick, 'slick' )
 
 	app.setIcons( kde )
-	drawIcons( app, "tab3", kde, 'kde' )
+	drawIcons( app, "tab3", "cnv3", kde, 'kde' )
 
 	app.setIcons( ikons )
-	drawIcons( app, "tab4", ikons, 'ikons' )
+	drawIcons( app, "tab4", "cnv4", ikons, 'ikons' )
 
 	app.mainloop()
 

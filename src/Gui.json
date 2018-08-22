@@ -41,22 +41,54 @@
 						{	"tag" : "tab1",
 							"widget" : "ttk.LabelFrame",
 							"args" : { "text" : "Tab 1" },
-							"add" : { "parent" : "nb0", "text" : "Tab 1" }
+							"add" : { "parent" : "nb0", "text" : "Tab 1" },
+							"children" : [
+								{	"tag" : "cnv1",
+									"widget" : "Tk.Canvas",
+									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
+									"scroll" : "y",
+									"opts" : { "bg" : "white", "width" : "800", "height" : "9999" }
+								}
+							]
 						},
 						{	"tag" : "tab2",
 							"widget" : "ttk.LabelFrame",
 							"args" : { "text" : "Tab 2" },
-							"add" : { "parent" : "nb0", "text" : "Tab 2" }
+							"add" : { "parent" : "nb0", "text" : "Tab 2" },
+							"children" : [
+								{	"tag" : "cnv2",
+									"widget" : "Tk.Canvas",
+									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
+									"scroll" : "y",
+									"opts" : { "bg" : "white", "width" : "800", "height" : "9999" }
+								}
+							]
 						},
 						{	"tag" : "tab3",
 							"widget" : "ttk.LabelFrame",
 							"args" : { "text" : "Tab 3" },
-							"add" : { "parent" : "nb0", "text" : "Tab 3" }
+							"add" : { "parent" : "nb0", "text" : "Tab 3" },
+							"children" : [
+								{	"tag" : "cnv3",
+									"widget" : "Tk.Canvas",
+									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
+									"scroll" : "y",
+									"opts" : { "bg" : "white", "width" : "800", "height" : "9999" }
+								}
+							]
 						},
 						{	"tag" : "tab4",
 							"widget" : "ttk.LabelFrame",
 							"args" : { "text" : "Tab 4" },
-							"add" : { "parent" : "nb0", "text" : "Tab 4" }
+							"add" : { "parent" : "nb0", "text" : "Tab 4" },
+							"children" : [
+								{	"tag" : "cnv4",
+									"widget" : "Tk.Canvas",
+									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
+									"scroll" : "y",
+									"opts" : { "bg" : "white", "width" : "800", "height" : "9999" }
+								}
+							]
 						}
 					]
 				}

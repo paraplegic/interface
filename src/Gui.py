@@ -70,6 +70,7 @@ class X( Tk.Tk ):
 			self.rowWeight( w, conf['row_weight'] )
 
 		if 'scroll' in conf:
+			print "scroll: ", parent, w
 			self.addScrollbars( self.widgets[parent], self.widgets[w], conf['scroll'] )
 
 		if 'bind' in conf:
