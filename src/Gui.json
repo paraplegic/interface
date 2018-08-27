@@ -23,7 +23,7 @@
 									"widget" : "ttk.Button",
 									"args" : { "text" : "Exit", "command" : "self.exitApplication" },
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "nw" },
-									"icon" : "stop-22"
+									"icon" : "stop"
 								},
 								{	"tag" : "theme0",
 									"widget" : "ttk.Label",
@@ -46,8 +46,8 @@
 								{	"tag" : "cnv1",
 									"widget" : "Tk.Canvas",
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
-									"scroll" : "y",
-									"opts" : { "bg" : "white", "width" : "800", "height" : "9999" }
+									"scroll" : "xy",
+									"opts" : { "bg" : "black", "width" : "800", "height" : "9999" }
 								}
 							]
 						},
@@ -59,8 +59,8 @@
 								{	"tag" : "cnv2",
 									"widget" : "Tk.Canvas",
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
-									"scroll" : "y",
-									"opts" : { "bg" : "white", "width" : "800", "height" : "9999" }
+									"scroll" : "xy",
+									"opts" : { "bg" : "black", "width" : "800", "height" : "9999" }
 								}
 							]
 						},
@@ -72,8 +72,8 @@
 								{	"tag" : "cnv3",
 									"widget" : "Tk.Canvas",
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
-									"scroll" : "y",
-									"opts" : { "bg" : "white", "width" : "800", "height" : "9999" }
+									"scroll" : "xy",
+									"opts" : { "bg" : "black", "width" : "800", "height" : "9999" }
 								}
 							]
 						},
@@ -85,8 +85,8 @@
 								{	"tag" : "cnv4",
 									"widget" : "Tk.Canvas",
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
-									"scroll" : "y",
-									"opts" : { "bg" : "white", "width" : "800", "height" : "9999" }
+									"scroll" : "xy",
+									"opts" : { "bg" : "black", "width" : "800", "height" : "9999" }
 								}
 							]
 						}

@@ -7,40 +7,63 @@ class Icon:
 
 	def __init__( self, pth ):
 		self.path = pth
-		self.info = None
-		pass
+		self.icons = {}
+		self.size = None
+		self.sizes = []
+		self.convert()
 
 	def convert( self ):
 		'''
 		An internal routine to convert from tcl/tk format to a useable form.
 		'''
-		self.info = {}
+		all_sizes = []
 		with open( self.path, 'r' ) as ic_file:
 			for line in ic_file:
 				s = line.split( ':' )
-				tag = s[0]
+				tag = s[0].split( '-' )[0]
 				size = s[3].split()[0]
+				all_sizes.append( size )
 				data = s[4]
-				entry = { "size" : size, "data" : data }
-				self.info[tag] = entry
+				if not size in self.icons:
+					self.icons[size] = {}
+				self.icons[size][tag] = data
+
+		sizes = set( all_sizes )
+		self.sizes = list( sizes )
+		self.size = self.sizes[0]
 
 	def list( self ):
 		'''
 		Return a list of icon tags ...
 		'''
-		if not self.info:
+		if not self.icons:
 			self.convert()
-		return self.info.keys()
+
+		rv = []
+		for tag, data in self.icons[self.size].items():
+			rv.append( tag )
+
+		return sorted( rv )
+
+	def getSizes( self ):
+		return self.sizes
+
+	def getSize( self ):
+		return self.size
+
+	def setSize( self, size ):
+		if size in self.sizes:
+			self.size = size
 
 	def get( self, tag ):
 		'''
 		Return the image data string for a specific icon tag ...
 		'''
-		if not self.info:
+		if not self.icons:
 			self.convert()
 
-		if tag in self.info:
-			return self.info[tag]['data']
+		if tag in self.icons[self.size]:
+			return self.icons[self.size][tag]
 
 		return None
 

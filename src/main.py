@@ -56,7 +56,7 @@ def drawIcons( app, tab, cnv, icons, lbl ):
 	for ic in iclist:
 		conf = { "tag" : ic, "widget" : "ttk.Label", "icon" : ic, "args": { "text" : ic, "compound" : "left" }, "grid" : { "row": r, "column" : c } }
 		app.addWidget( cnv, ic, conf )
-                app.widgets[ic].configure( background="white" )
+		app.widgets[ic].configure( background="black", foreground="white" )
 		canvas.create_window( c, r, window=app.widgets[ic] )
 		r += 30
 		if r > max_y:
