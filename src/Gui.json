@@ -42,11 +42,14 @@
 							"widget" : "ttk.LabelFrame",
 							"args" : { "text" : "Tab 1" },
 							"add" : { "parent" : "nb0", "text" : "Tab 1" },
+							"bind" : { "event" : "<MouseWheel>", "binding" : "self.mousewheel" },
 							"children" : [
 								{	"tag" : "cnv1",
 									"widget" : "Tk.Canvas",
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
 									"scroll" : "xy",
+									"bind" : { "event" : "<MouseWheel>", "binding" : "self.mousewheel" },
+									"bind" : { "event" : "<MouseWheel>", "binding" : "self.mousewheel" },
 									"opts" : { "bg" : "black", "width" : "800", "height" : "9999" }
 								}
 							]

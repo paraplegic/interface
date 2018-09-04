@@ -105,13 +105,16 @@ class X( Tk.Tk ):
 			self.widgets[w].grid_rowconfigure( ix, weight=wgt )
 			ix += 1
 
+        def mousewheel( self, event ):
+            print event
+
 	def addScrollbars( self, parent, w, conf ):
 		if 'x' in conf:
 			xsb = ttk.Scrollbar( parent, orient='horizontal' )
 			xsb.grid( row=1, column=0, sticky="new" )
 			xsb.config( command=w.xview)
 			w.config( xscrollcommand=xsb.set)
-			parent.grid_columnconfigure( 0, weight=10 )
+			parent.grid_columnconfigure( 0, weight=50 )
 			parent.grid_columnconfigure( 1, weight=1 )
 
 		if 'y' in conf:
@@ -119,7 +122,8 @@ class X( Tk.Tk ):
 			ysb.grid( row=0, column=1, sticky="wns" )
 			ysb.config( command=w.yview)
 			w.config( yscrollcommand=ysb.set)
-			parent.grid_rowconfigure( 0, weight=10 )
+                        parent.bind( "<MouseWheel>", self.mousewheel )
+			parent.grid_rowconfigure( 0, weight=50 )
 			parent.grid_rowconfigure( 1, weight=1 )
 
 	def getWidget( self, tag ):

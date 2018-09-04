@@ -61,7 +61,7 @@ def drawIcons( app, tab, cnv, icons, lbl ):
 		r += 30
 		if r > max_y:
 			max_y = r
-		if r > 9970:
+		if r > 900:
 			r = 10
 			c += 200
 
