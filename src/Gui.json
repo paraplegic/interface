@@ -33,7 +33,9 @@
 								{	"tag" : "combo0",
 									"widget" : "ttk.Combobox",
 									"args" : { "values" : [ "clam", "alt", "classic", "default" ], "textvariable" : "myTheme" },
-									"bind" : { "event" : "<<ComboboxSelected>>", "binding" : "self.setTheme" },
+									"bind" : [
+										{ "event" : "<<ComboboxSelected>>", "binding" : "self.setTheme" }
+									],
 									"grid" : { "row" : "0", "column" : "2", "sticky" : "w" }
 								}
 							]
@@ -42,14 +44,15 @@
 							"widget" : "ttk.LabelFrame",
 							"args" : { "text" : "Tab 1" },
 							"add" : { "parent" : "nb0", "text" : "Tab 1" },
-							"bind" : { "event" : "<MouseWheel>", "binding" : "self.mousewheel" },
 							"children" : [
 								{	"tag" : "cnv1",
 									"widget" : "Tk.Canvas",
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
 									"scroll" : "xy",
-									"bind" : { "event" : "<MouseWheel>", "binding" : "self.mousewheel" },
-									"bind" : { "event" : "<MouseWheel>", "binding" : "self.mousewheel" },
+									"bind" : [
+										{ "event" : "<Button-4>", "binding" : "self.mousewheel" },
+										{ "event" : "<Button-5>", "binding" : "self.mousewheel" }
+									],
 									"opts" : { "bg" : "black", "width" : "800", "height" : "9999" }
 								}
 							]
@@ -63,6 +66,10 @@
 									"widget" : "Tk.Canvas",
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
 									"scroll" : "xy",
+									"bind" : [
+										{ "event" : "<Button-4>", "binding" : "self.mousewheel" },
+										{ "event" : "<Button-5>", "binding" : "self.mousewheel" }
+									],
 									"opts" : { "bg" : "black", "width" : "800", "height" : "9999" }
 								}
 							]
@@ -76,6 +83,10 @@
 									"widget" : "Tk.Canvas",
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
 									"scroll" : "xy",
+									"bind" : [
+										{ "event" : "<Button-4>", "binding" : "self.mousewheel" },
+										{ "event" : "<Button-5>", "binding" : "self.mousewheel" }
+									],
 									"opts" : { "bg" : "black", "width" : "800", "height" : "9999" }
 								}
 							]
@@ -89,6 +100,10 @@
 									"widget" : "Tk.Canvas",
 									"grid" : { "row" : "0", "column" : "0", "sticky" : "news" },
 									"scroll" : "xy",
+									"bind" : [
+										{ "event" : "<Button-4>", "binding" : "self.mousewheel" },
+										{ "event" : "<Button-5>", "binding" : "self.mousewheel" }
+									],
 									"opts" : { "bg" : "black", "width" : "800", "height" : "9999" }
 								}
 							]

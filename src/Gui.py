@@ -1,6 +1,8 @@
 import Tkinter as Tk
 import ttk as ttk
 
+scrollIncrement = 5
+
 class X( Tk.Tk ):
 
 	root = ""
@@ -70,12 +72,14 @@ class X( Tk.Tk ):
 			self.rowWeight( w, conf['row_weight'] )
 
 		if 'scroll' in conf:
-			print "scroll: ", parent, w
+			print "scroll: p: %s w: %s" % (parent, w)
 			self.addScrollbars( self.widgets[parent], self.widgets[w], conf['scroll'] )
 
 		if 'bind' in conf:
-			s = 'self.widgets[w].bind( "%s", %s )' % ( conf['bind']['event'], conf['bind']['binding'] )
-			eval( s )
+			for b in conf['bind']:
+				s = 'self.widgets[w].bind( "%s", %s )' % ( b['event'], b['binding'] )
+				print s
+				eval( s )
 
 		if 'icon' in conf:
 			img = self.getIconImage( conf['icon'] )
@@ -105,8 +109,21 @@ class X( Tk.Tk ):
 			self.widgets[w].grid_rowconfigure( ix, weight=wgt )
 			ix += 1
 
-        def mousewheel( self, event ):
-            print event
+	def scrollbars( self, w ):
+		rv = []
+		parent = w._nametowidget( w.winfo_parent() )
+		for cld in parent.winfo_children():
+			cls = cld.winfo_class()
+			if cls == 'TScrollbar':
+				rv.append( w._nametowidget( cld ) )
+
+		return rv
+
+	def mousewheel( self, event ):
+		inc = scrollIncrement
+		if event.num == 4:
+			inc = -1 * scrollIncrement
+		event.widget.yview_scroll( inc, "units" )
 
 	def addScrollbars( self, parent, w, conf ):
 		if 'x' in conf:
@@ -122,7 +139,6 @@ class X( Tk.Tk ):
 			ysb.grid( row=0, column=1, sticky="wns" )
 			ysb.config( command=w.yview)
 			w.config( yscrollcommand=ysb.set)
-                        parent.bind( "<MouseWheel>", self.mousewheel )
 			parent.grid_rowconfigure( 0, weight=50 )
 			parent.grid_rowconfigure( 1, weight=1 )
 

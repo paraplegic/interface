@@ -66,7 +66,6 @@ def drawIcons( app, tab, cnv, icons, lbl ):
 			c += 200
 
 	canvas.configure( scrollregion=canvas.bbox( "all" ) )
-
 		
 def main( args ):
 
